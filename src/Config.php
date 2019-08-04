@@ -35,7 +35,7 @@ class Config
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             );
             $this->connect = new PDO($dsn, self::DB_USER, self::DB_PASSWORD, $options);
-            $this->connect->exec('SET NAMES UTF8');
+            $this->connect->exec('SET NAMES '.self::DB_CHARSET);
 
 
         } catch (PDOException $e) {

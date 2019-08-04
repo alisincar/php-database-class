@@ -14,7 +14,7 @@ class Database extends Config
 
     public function query()
     {
-        $this->_query = "SELECT $this->_select FROM  $this->_table  WHERE $this->_where $this->_group $this->_order $this->_limit";
+        $this->_query = "SELECT $this->_select FROM  $this->_table  $this->_where $this->_group $this->_order $this->_limit";
         return $this;
     }
 
@@ -28,8 +28,11 @@ class Database extends Config
     {
         if ($this->_where == null) {
             $equal = '';
+            $where = 'WHERE ';
+        }else{
+            $where='';
         }
-        $this->_where .= $equal . ' ' . $column . ' ' . $operator . ' ' . $value;
+        $this->_where .=$where.$equal . ' ' . $column . ' ' . $operator . ' ' . $value;
         return $this;
     }
 

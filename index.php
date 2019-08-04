@@ -2,6 +2,9 @@
 /*
  * Plugin içerisinde kullanılacak Classları dahil ediyoruz.
  */
+
+use src\Database;
+
 function autoload($className)
 {
 
@@ -15,7 +18,7 @@ function autoload($className)
 //Sınıfımızı arayıp bulacak olan metotu belirliyoruz.
 spl_autoload_register('autoload');
 
-$db = new src\Database();
-$products = $db->table('uyeler')->select(['ref', 'ad', 'soyad'])->where('enrid', '=', '10')->orderBy(['ad','soyad'])->limit('5')->getAll();
+$db = new Database();
+$products = $db->table('uyeler')->select(['ref', 'ad', 'soyad'])->where('enrid', '=', '10')->orderBy(['ad','soyad'])->limit('5')->get();
 echo "<pre>";
 print_r($products);
